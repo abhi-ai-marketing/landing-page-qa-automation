@@ -1,490 +1,771 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Landing Page QA Automation</title>
-
   <style>
+    :root {
+      --bg: #f7f1e8;
+      --surface: #fffdf9;
+      --surface-2: #ffffff;
+      --text: #13294b;
+      --muted: #506176;
+      --border: #eadfce;
+      --pink: #c2185b;
+      --pink-dark: #a3154d;
+      --purple: #8e24aa;
+      --orange: #ff8a65;
+      --yellow: #ffca28;
+      --navy: #102a43;
+      --blue-soft: #d7e8ff;
+      --rose-soft: #fde7ef;
+      --lavender-soft: #f3e8ff;
+      --shadow: 0 14px 30px rgba(16, 42, 67, 0.08);
+      --radius: 24px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f8f4ea;
-      color: #1f2937;
-      line-height: 1.6;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
     }
 
     .container {
-      max-width: 1050px;
-      margin: auto;
-      padding: 40px 20px;
+      width: min(1150px, 92%);
+      margin: 0 auto;
     }
 
-    .hero {
-      background: #fffdf7;
-      border: 1px solid #eadfca;
-      border-radius: 22px;
-      padding: 35px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-    }
-
-    h1 {
-      font-size: 44px;
-      margin: 0 0 10px;
-      line-height: 1.1;
-    }
-
-    h2 {
-      font-size: 28px;
-      margin-top: 40px;
-      border-bottom: 3px solid #bfdbfe;
-      display: inline-block;
-    }
-
-    h3 {
-      margin-top: 28px;
-      font-size: 21px;
+    .topbar {
+      padding: 20px 0 8px;
     }
 
     .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: 2px solid rgba(194, 24, 91, 0.2);
+      color: var(--pink);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: #fff8fb;
+    }
+
+    .nav-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin: 24px 0 10px;
+    }
+
+    .btn {
       display: inline-block;
-      background: #fde68a;
-      padding: 5px 12px;
-      border-radius: 20px;
-      font-weight: bold;
+      padding: 14px 24px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 16px;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--pink), var(--purple));
+      color: #fff;
+    }
+
+    .btn-light {
+      background: #fff;
+      color: var(--navy);
+      border: 1px solid #e7dccc;
+    }
+
+    .btn-accent {
+      background: linear-gradient(135deg, var(--orange), var(--yellow));
+      color: #102a43;
+    }
+
+    .hero {
+      padding: 18px 0 32px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 32px;
+      align-items: start;
+    }
+
+    .hero h1 {
+      font-size: clamp(40px, 5vw, 68px);
+      line-height: 1.06;
+      margin: 18px 0 18px;
+      color: #2d2323;
+      letter-spacing: -0.02em;
+    }
+
+    .hero h1 span {
+      color: var(--pink);
+    }
+
+    .hero .lead {
+      font-size: 22px;
+      color: var(--muted);
+      max-width: 780px;
+      margin-bottom: 26px;
+    }
+
+    .section-label {
+      color: var(--pink);
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
       margin-bottom: 12px;
     }
 
-    .highlight {
-      background: linear-gradient(transparent 55%, #bfdbfe 55%);
-      font-weight: bold;
+    .mini-note {
+      font-size: 15px;
+      color: var(--muted);
+    }
+
+    .hero-card {
+      background: linear-gradient(180deg, #fff8fb 0%, #ffffff 100%);
+      border: 1px solid #f2d7e4;
+      border-radius: 28px;
+      padding: 26px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card h3 {
+      margin-top: 0;
+      font-size: 24px;
+      margin-bottom: 14px;
+      color: var(--navy);
+    }
+
+    .hero-card ul {
+      padding-left: 18px;
+      margin: 0;
+    }
+
+    .hero-card li {
+      margin-bottom: 10px;
+      color: var(--muted);
+    }
+
+    .section {
+      padding: 36px 0 18px;
+    }
+
+    .section-title {
+      font-size: clamp(34px, 4vw, 52px);
+      line-height: 1.12;
+      margin: 0 0 12px;
+      color: var(--navy);
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      font-size: 19px;
+      max-width: 860px;
+      margin: 0 0 24px;
+    }
+
+    .underline {
+      width: 112px;
+      height: 5px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--pink), #dfb0c4);
+      margin: 0 0 30px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 24px;
     }
 
     .card {
-      background: #fffdf7;
-      border: 1px solid #eadfca;
-      border-radius: 16px;
-      padding: 20px;
-      margin: 16px 0;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
     }
 
-    .grid {
+    .card.soft-pink {
+      background: linear-gradient(180deg, #fff7fa 0%, #fffdf9 100%);
+    }
+
+    .card.soft-blue {
+      background: linear-gradient(180deg, #f8fbff 0%, #fffdf9 100%);
+    }
+
+    .card.soft-lavender {
+      background: linear-gradient(180deg, #fbf8ff 0%, #fffdf9 100%);
+    }
+
+    .card.soft-orange {
+      background: linear-gradient(180deg, #fffaf4 0%, #fffdf9 100%);
+    }
+
+    .card h3 {
+      margin: 0 0 14px;
+      font-size: 22px;
+      color: var(--navy);
+    }
+
+    .card p {
+      margin: 0;
+      font-size: 18px;
+      color: var(--muted);
+    }
+
+    .tools-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 16px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+      margin-top: 24px;
     }
 
-    .codebox {
-      background: #0f172a;
-      color: #e5e7eb;
-      border-radius: 14px;
-      overflow: hidden;
-      margin: 15px 0;
+    .tool-card {
+      background: #fff;
+      border: 1px solid #eadfce;
+      border-radius: 24px;
+      padding: 26px;
+      box-shadow: var(--shadow);
     }
 
-    .codebar {
-      background: #111827;
-      padding: 10px 14px;
-      display: flex;
-      justify-content: space-between;
+    .tool-card .icon {
+      width: 52px;
+      height: 52px;
+      display: inline-flex;
       align-items: center;
-      color: #cbd5e1;
-      font-size: 14px;
+      justify-content: center;
+      border-radius: 16px;
+      font-size: 24px;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, var(--blue-soft), #ffffff);
+    }
+
+    .tool-card h3 {
+      margin: 0 0 8px;
+      font-size: 22px;
+      color: var(--navy);
+    }
+
+    .tool-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .workflow {
+      display: grid;
+      gap: 16px;
+      margin-top: 22px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 68px 1fr;
+      gap: 18px;
+      align-items: start;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .step-num {
+      width: 68px;
+      height: 68px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      font-weight: 800;
+      color: #fff;
+      background: linear-gradient(135deg, var(--pink), var(--purple));
+    }
+
+    .step h3 {
+      margin: 0 0 8px;
+      font-size: 24px;
+      color: var(--navy);
+    }
+
+    .step p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .code-wrap {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    .code-card {
+      background: #fff;
+      border-radius: 24px;
+      border: 1px solid var(--border);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .code-card h3 {
+      margin: 0 0 14px;
+      font-size: 22px;
+      color: var(--navy);
     }
 
     pre {
       margin: 0;
-      padding: 16px;
       overflow-x: auto;
-      white-space: pre-wrap;
+      background: #102a43;
+      color: #f5f7fa;
+      border-radius: 18px;
+      padding: 18px;
       font-size: 14px;
-    }
-
-    button {
-      background: #2563eb;
-      color: white;
-      border: 0;
-      padding: 7px 12px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    .warning {
-      background: #fffbeb;
-      border-left: 5px solid #f59e0b;
-      padding: 14px;
-      border-radius: 10px;
-      margin: 16px 0;
-    }
-
-    .success {
-      background: #ecfdf5;
-      border-left: 5px solid #16a34a;
-      padding: 14px;
-      border-radius: 10px;
-      margin: 16px 0;
-    }
-
-    .folder {
-      background: white;
-      border: 1px dashed #d6c6a8;
-      padding: 15px;
-      border-radius: 12px;
-      font-family: Consolas, monospace;
+      line-height: 1.6;
       white-space: pre-wrap;
+      word-break: break-word;
     }
 
-    footer {
-      margin-top: 45px;
-      color: #6b7280;
-      font-size: 14px;
+    .highlight {
+      background: linear-gradient(135deg, var(--rose-soft), var(--lavender-soft));
+      border: 1px solid #efd5e6;
+      border-radius: 24px;
+      padding: 24px;
+      margin-top: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .highlight h3 {
+      margin: 0 0 10px;
+      font-size: 24px;
+      color: var(--purple);
+    }
+
+    .highlight p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .checklist {
+      display: grid;
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .check-item {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 16px 18px;
+      box-shadow: var(--shadow);
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .footer {
+      margin-top: 60px;
+      background: var(--navy);
+      color: #fff;
+      padding: 24px 0;
+      text-align: center;
+    }
+
+    .footer p {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .grid-3,
+      .grid-4,
+      .grid-2,
+      .tools-grid,
+      .code-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 8px;
+      }
+
+      .hero h1 {
+        font-size: 46px;
+      }
+
+      .step {
+        grid-template-columns: 1fr;
+      }
+
+      .step-num {
+        width: 56px;
+        height: 56px;
+        font-size: 24px;
+      }
     }
   </style>
 </head>
-
 <body>
-  <div class="container">
 
-    <section class="hero">
-      <div class="tag">Marketing QA Automation</div>
-      <h1>Landing Page <span class="highlight">QA Automation</span></h1>
-      <p>
-        A simple browser automation workflow for checking landing pages, forms,
-        screenshots and reports before performance marketing campaigns.
-      </p>
-      <p>
-        This is a generic public guide. Do not add private company URLs, real emails,
-        API keys, passwords or internal information here.
-      </p>
-    </section>
+  <div class="topbar">
+    <div class="container">
+      <div class="tag">Landing Page QA Automation</div>
 
-    <h2>What this solves</h2>
-
-    <div class="grid">
-      <div class="card">
-        <h3>Manual checks</h3>
-        <p>Opening pages, clicking CTAs, filling forms and taking screenshots can become repetitive.</p>
-      </div>
-
-      <div class="card">
-        <h3>Campaign risk</h3>
-        <p>Sending paid traffic to a broken page or form can waste budget quickly.</p>
-      </div>
-
-      <div class="card">
-        <h3>Proof</h3>
-        <p>The workflow saves screenshots and a CSV report so there is a clear trail of what happened.</p>
+      <div class="nav-buttons">
+        <a class="btn btn-primary" href="#problem">What this solves</a>
+        <a class="btn btn-light" href="#tools">Tools used</a>
+        <a class="btn btn-light" href="#workflow">Workflow</a>
+        <a class="btn btn-accent" href="#schedule">How to schedule</a>
       </div>
     </div>
-
-    <h2>How it works</h2>
-
-    <div class="card">
-      <p><strong>1.</strong> Node.js runs the automation script.</p>
-      <p><strong>2.</strong> The script calls agent-browser, which controls the testing browser.</p>
-      <p><strong>3.</strong> A testing browser opens the landing page.</p>
-      <p><strong>4.</strong> The workflow fills dummy data, clicks the approved CTA, captures screenshots and creates a report.</p>
-    </div>
-
-    <h2>Tools used</h2>
-
-    <div class="grid">
-      <div class="card"><strong>Node.js</strong><br>Runs the automation file.</div>
-      <div class="card"><strong>PowerShell</strong><br>Runs setup and test commands on Windows.</div>
-      <div class="card"><strong>Notepad</strong><br>Saves the prepared files.</div>
-      <div class="card"><strong>agent-browser</strong><br>Controls the testing browser.</div>
-      <div class="card"><strong>Task Scheduler</strong><br>Runs the test automatically.</div>
-      <div class="card"><strong>AI / GPT</strong><br>Helps create and troubleshoot the starter workflow.</div>
-    </div>
-
-    <h2>Step 1 — Install Node.js</h2>
-
-    <p>Download Node.js from:</p>
-
-    <div class="codebox">
-      <div class="codebar">
-        <span>Node.js link</span>
-        <button onclick="copyCode(this)">Copy</button>
-      </div>
-      <pre><code>https://nodejs.org/en</code></pre>
-    </div>
-
-    <p>Install the Windows LTS version with default options. Then open PowerShell and check:</p>
-
-    <div class="codebox">
-      <div class="codebar">
-        <span>PowerShell</span>
-        <button onclick="copyCode(this)">Copy</button>
-      </div>
-      <pre><code>node -v
-npm.cmd -v</code></pre>
-    </div>
-
-    <p>If both commands show version numbers, Node.js is installed correctly.</p>
-
-    <h2>Step 2 — Install browser control</h2>
-
-    <p>This installs the browser-control component used by the automation.</p>
-
-    <div class="codebox">
-      <div class="codebar">
-        <span>PowerShell</span>
-        <button onclick="copyCode(this)">Copy</button>
-      </div>
-      <pre><code>npm.cmd install -g agent-browser
-agent-browser.cmd install</code></pre>
-    </div>
-
-    <p>To test it:</p>
-
-    <div class="codebox">
-      <div class="codebar">
-        <span>PowerShell</span>
-        <button onclick="copyCode(this)">Copy</button>
-      </div>
-      <pre><code>agent-browser.cmd --headed open
-agent-browser.cmd close</code></pre>
-    </div>
-
-    <div class="warning">
-      <strong>Note:</strong> The testing browser may open as a blank page. That is normal.
-    </div>
-
-    <h2>Step 3 — Create the folder</h2>
-
-    <div class="codebox">
-      <div class="codebar">
-        <span>PowerShell</span>
-        <button onclick="copyCode(this)">Copy</button>
-      </div>
-      <pre><code>mkdir "$env:USERPROFILE\website-qa"
-mkdir "$env:USERPROFILE\website-qa\config"</code></pre>
-    </div>
-
-    <p>Final folder structure:</p>
-
-    <div class="folder">website-qa
-├── run-page-test.js
-├── run-test-now.bat
-├── run-scheduled.bat
-├── config
-│   └── page-config.json
-└── runs
-    └── generated automatically after each run</div>
-
-    <h2>Step 4 — Add page details</h2>
-
-    <p>Open the config file:</p>
-
-    <div class="codebox">
-      <div class="codebar">
-        <span>PowerShell</span>
-        <button onclick="copyCode(this)">Copy</button>
-      </div>
-      <pre><code>notepad "$env:USERPROFILE\website-qa\config\page-config.json"</code></pre>
-    </div>
-
-    <p>Paste and update this example:</p>
-
-    <div class="codebox">
-      <div class="codebar">
-        <span>page-config.json</span>
-        <button onclick="copyCode(this)">Copy</button>
-      </div>
-      <pre><code>{
-  "pageName": "Example Landing Page",
-  "pageUrl": "https://www.example.com/landing-page/",
-  "testName": "Website QA Test",
-  "testEmail": "test@example.com",
-  "testPhone": "07000000000",
-  "sourceValue": "Google",
-  "requiredFields": {
-    "fullName": ["Full Name", "Name"],
-    "email": ["Email Address", "Email"],
-    "phone": ["Phone No.", "Phone", "Telephone"],
-    "sourceDropdown": ["Where did you hear about us", "How did you hear about us"]
-  },
-  "submitButtonLabels": ["Submit", "Download", "Send"],
-  "approvedCtaLabels": ["Primary CTA", "Download", "Get in touch"],
-  "successText": ["thank", "thanks", "success", "submitted", "downloaded", "contact with you shortly"],
-  "emailTriggerCheck": "Manual inbox check required"
-}</code></pre>
-    </div>
-
-    <h2>Step 5 — Create the main automation file</h2>
-
-    <p>Open Notepad:</p>
-
-    <div class="codebox">
-      <div class="codebar">
-        <span>PowerShell</span>
-        <button onclick="copyCode(this)">Copy</button>
-      </div>
-      <pre><code>notepad "$env:USERPROFILE\website-qa\run-page-test.js"</code></pre>
-    </div>
-
-    <p>
-      Paste the prepared JavaScript automation code into this file.
-      Normal users should update the config file, not this main file.
-    </p>
-
-    <div class="warning">
-      <strong>Important:</strong> The full main automation code can be kept in a separate code section or separate file in this repository.
-      Keep this public version generic and remove all private business details.
-    </div>
-
-    <h2>Step 6 — Create run files</h2>
-
-    <p>Manual run file:</p>
-
-    <div class="codebox">
-      <div class="codebar">
-        <span>PowerShell</span>
-        <button onclick="copyCode(this)">Copy</button>
-      </div>
-      <pre><code>notepad "$env:USERPROFILE\website-qa\run-test-now.bat"</code></pre>
-    </div>
-
-    <div class="codebox">
-      <div class="codebar">
-        <span>run-test-now.bat</span>
-        <button onclick="copyCode(this)">Copy</button>
-      </div>
-      <pre><code>@echo off
-cd /d "%USERPROFILE%\website-qa"
-node run-page-test.js
-pause</code></pre>
-    </div>
-
-    <p>Scheduled run file:</p>
-
-    <div class="codebox">
-      <div class="codebar">
-        <span>PowerShell</span>
-        <button onclick="copyCode(this)">Copy</button>
-      </div>
-      <pre><code>notepad "$env:USERPROFILE\website-qa\run-scheduled.bat"</code></pre>
-    </div>
-
-    <div class="codebox">
-      <div class="codebar">
-        <span>run-scheduled.bat</span>
-        <button onclick="copyCode(this)">Copy</button>
-      </div>
-      <pre><code>@echo off
-cd /d "%USERPROFILE%\website-qa"
-echo ======================================== >> "%USERPROFILE%\website-qa\scheduler-log.txt"
-echo Website QA started at %date% %time% >> "%USERPROFILE%\website-qa\scheduler-log.txt"
-node run-page-test.js >> "%USERPROFILE%\website-qa\scheduler-log.txt" 2>&1
-echo Website QA finished at %date% %time% >> "%USERPROFILE%\website-qa\scheduler-log.txt"
-echo ======================================== >> "%USERPROFILE%\website-qa\scheduler-log.txt"</code></pre>
-    </div>
-
-    <div class="warning">
-      <strong>Important:</strong> In Notepad, choose <strong>Save as type: All Files</strong>.
-      Otherwise Windows may save the file as .bat.txt, which will not run correctly.
-    </div>
-
-    <h2>Step 7 — Run the test</h2>
-
-    <div class="codebox">
-      <div class="codebar">
-        <span>PowerShell</span>
-        <button onclick="copyCode(this)">Copy</button>
-      </div>
-      <pre><code>cd "$env:USERPROFILE\website-qa"
-node ".\run-page-test.js"</code></pre>
-    </div>
-
-    <p>Or double-click:</p>
-
-    <div class="codebox">
-      <div class="codebar">
-        <span>Run file</span>
-        <button onclick="copyCode(this)">Copy</button>
-      </div>
-      <pre><code>C:\Users\&lt;YourName&gt;\website-qa\run-test-now.bat</code></pre>
-    </div>
-
-    <h2>Step 8 — Check output</h2>
-
-    <p>Every run creates a dated folder here:</p>
-
-    <div class="codebox">
-      <div class="codebar">
-        <span>Folder</span>
-        <button onclick="copyCode(this)">Copy</button>
-      </div>
-      <pre><code>C:\Users\&lt;YourName&gt;\website-qa\runs</code></pre>
-    </div>
-
-    <p>The run folder can include:</p>
-
-    <ul>
-      <li>Before screenshot</li>
-      <li>After screenshot</li>
-      <li>CSV / Excel report</li>
-      <li>Time taken</li>
-      <li>Pass / fail status</li>
-      <li>Manual email-check note</li>
-    </ul>
-
-    <h2>Step 9 — Schedule it</h2>
-
-    <p>Open Windows Search and type:</p>
-
-    <div class="codebox">
-      <div class="codebar">
-        <span>Windows Search</span>
-        <button onclick="copyCode(this)">Copy</button>
-      </div>
-      <pre><code>Task Scheduler</code></pre>
-    </div>
-
-    <ul>
-      <li>Create Basic Task</li>
-      <li>Choose weekly or twice weekly</li>
-      <li>Choose a time during working hours</li>
-      <li>For Action, choose Start a program</li>
-      <li>Select run-scheduled.bat</li>
-    </ul>
-
-    <div class="success">
-      <strong>Scheduling note:</strong> The PC must be switched on, connected to the internet and available at the scheduled time.
-      If the PC is off, asleep or not logged in, the scheduled test may not run properly.
-    </div>
-
-    <h2>Important reminder</h2>
-
-    <p>
-      For every new landing page, do not rewrite the main automation file.
-      Update only:
-    </p>
-
-    <div class="codebox">
-      <div class="codebar">
-        <span>Config file</span>
-        <button onclick="copyCode(this)">Copy</button>
-      </div>
-      <pre><code>C:\Users\&lt;YourName&gt;\website-qa\config\page-config.json</code></pre>
-    </div>
-
-    <footer>
-      Generic public guide for landing page QA automation. Keep private business details out of public repositories.
-    </footer>
-
   </div>
 
-  <script>
-    function copyCode(button) {
-      const code = button.parentElement.nextElementSibling.innerText;
-      navigator.clipboard.writeText(code).then(() => {
-        const old = button.innerText;
-        button.innerText = "Copied";
-        setTimeout(() => button.innerText = old, 1200);
-      });
-    }
-  </script>
+  <header class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="section-label">Public workflow page</div>
+        <h1>The Landing Page <span>QA Automation</span> Guide</h1>
+        <p class="lead">
+          A simple browser automation workflow to test landing pages before performance campaigns go live.
+          It helps check the page, the CTA, the form flow, the screenshots and the report — all in one repeatable process.
+        </p>
+
+        <div class="highlight">
+          <h3>What this helps with</h3>
+          <p>
+            Before sending paid traffic to a page, it is useful to have a quick, repeatable check so obvious issues do not slip through.
+          </p>
+        </div>
+      </div>
+
+      <aside class="hero-card">
+        <h3>Quick overview</h3>
+        <ul>
+          <li>Open a landing page automatically</li>
+          <li>Check the key CTA and form flow</li>
+          <li>Fill dummy test details</li>
+          <li>Capture before and after screenshots</li>
+          <li>Measure time taken</li>
+          <li>Generate a simple report</li>
+          <li>Run it again on a schedule</li>
+        </ul>
+      </aside>
+    </div>
+  </header>
+
+  <section class="section" id="problem">
+    <div class="container">
+      <div class="section-label">What this solves</div>
+      <h2 class="section-title">A simple safety check before performance traffic goes live</h2>
+      <div class="underline"></div>
+
+      <div class="grid-3">
+        <div class="card soft-pink">
+          <h3>Manual checks</h3>
+          <p>
+            Opening pages, clicking CTAs, filling forms and taking screenshots can become repetitive very quickly.
+          </p>
+        </div>
+
+        <div class="card soft-blue">
+          <h3>Campaign risk</h3>
+          <p>
+            Sending paid traffic to a broken page, broken button or broken form can waste budget fast.
+          </p>
+        </div>
+
+        <div class="card soft-lavender">
+          <h3>Clear output</h3>
+          <p>
+            The workflow saves screenshots and a simple report so there is a visible record of what happened.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="tools">
+    <div class="container">
+      <div class="section-label">Tools</div>
+      <h2 class="section-title">Tools used</h2>
+      <div class="underline"></div>
+
+      <div class="tools-grid">
+        <div class="tool-card">
+          <div class="icon">🟢</div>
+          <h3>Node.js</h3>
+          <p>Runs the automation file.</p>
+        </div>
+
+        <div class="tool-card">
+          <div class="icon">💻</div>
+          <h3>PowerShell</h3>
+          <p>Runs setup and testing commands on Windows.</p>
+        </div>
+
+        <div class="tool-card">
+          <div class="icon">📝</div>
+          <h3>Notepad</h3>
+          <p>Saves the prepared files and configuration.</p>
+        </div>
+
+        <div class="tool-card">
+          <div class="icon">🌐</div>
+          <h3>agent-browser</h3>
+          <p>Controls the testing browser during the automation run.</p>
+        </div>
+
+        <div class="tool-card">
+          <div class="icon">📅</div>
+          <h3>Task Scheduler</h3>
+          <p>Runs the test automatically on a chosen schedule.</p>
+        </div>
+
+        <div class="tool-card">
+          <div class="icon">✨</div>
+          <h3>AI</h3>
+          <p>Helps create the starter workflow and troubleshoot the setup faster.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="workflow">
+    <div class="container">
+      <div class="section-label">Workflow</div>
+      <h2 class="section-title">How the workflow works</h2>
+      <div class="underline"></div>
+
+      <div class="workflow">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div>
+            <h3>Install the basics</h3>
+            <p>
+              Install Node.js, then install the browser-control component. This sets up the environment required to run the test locally.
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">2</div>
+          <div>
+            <h3>Create the files</h3>
+            <p>
+              Save the prepared automation file, the config file and the manual run file in one local working folder.
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">3</div>
+          <div>
+            <h3>Update page details</h3>
+            <p>
+              Add the page name, page URL, dummy name, dummy email and dummy phone in the config. For a new page, only this part changes.
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">4</div>
+          <div>
+            <h3>Run the test</h3>
+            <p>
+              The script opens the page, checks the CTA and form, enters dummy details, submits, captures screenshots, measures time and creates the report.
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">5</div>
+          <div>
+            <h3>Review the output</h3>
+            <p>
+              Each run creates a timestamped folder with screenshots, pass/fail results and the overall time taken.
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">6</div>
+          <div>
+            <h3>Schedule it</h3>
+            <p>
+              Once the manual test works, Windows Task Scheduler can run the workflow weekly or twice weekly.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="highlight">
+        <h3>Simple logic behind the code</h3>
+        <p>
+          PowerShell starts the script. Node.js runs it. agent-browser controls the testing browser. The script reads the page details from the config file, opens the page, performs the test steps, then saves the outputs into a run folder.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="files">
+    <div class="container">
+      <div class="section-label">Files</div>
+      <h2 class="section-title">Files used in the setup</h2>
+      <div class="underline"></div>
+
+      <div class="grid-3">
+        <div class="card soft-orange">
+          <h3>run-page-test.js</h3>
+          <p>
+            The main automation file. This contains the workflow logic that runs the landing page test.
+          </p>
+        </div>
+
+        <div class="card soft-blue">
+          <h3>page-config.json</h3>
+          <p>
+            The config file. This stores the page URL, page name and dummy test details.
+          </p>
+        </div>
+
+        <div class="card soft-pink">
+          <h3>run-test-now.bat</h3>
+          <p>
+            A shortcut file so the test can be run without typing the full command every time.
+          </p>
+        </div>
+      </div>
+
+      <div class="code-wrap">
+        <div class="code-card">
+          <h3>Example run command</h3>
+          <pre>cd "%USERPROFILE%\website-qa"
+node run-page-test.js</pre>
+        </div>
+
+        <div class="code-card">
+          <h3>Example manual run file</h3>
+          <pre>@echo off
+cd /d "%USERPROFILE%\website-qa"
+node run-page-test.js
+pause</pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="output">
+    <div class="container">
+      <div class="section-label">Output</div>
+      <h2 class="section-title">What the output looks like</h2>
+      <div class="underline"></div>
+
+      <div class="grid-2">
+        <div class="card soft-lavender">
+          <h3>Saved screenshots</h3>
+          <p>
+            The workflow captures screenshots before and after the form submission so the result can be checked visually.
+          </p>
+        </div>
+
+        <div class="card soft-blue">
+          <h3>Simple report</h3>
+          <p>
+            A report is generated showing key checks, overall status, time taken and where the screenshots were saved.
+          </p>
+        </div>
+
+        <div class="card soft-pink">
+          <h3>Timestamped folders</h3>
+          <p>
+            Each test run creates a separate dated folder, so old outputs are not overwritten.
+          </p>
+        </div>
+
+        <div class="card soft-orange">
+          <h3>Manual email check</h3>
+          <p>
+            If the workflow triggers an email, that part may still need to be checked manually in the inbox.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="schedule">
+    <div class="container">
+      <div class="section-label">Automation</div>
+      <h2 class="section-title">How to schedule it</h2>
+      <div class="underline"></div>
+
+      <div class="highlight">
+        <h3>Use Windows Task Scheduler</h3>
+        <p>
+          After the manual run works properly, the same workflow can be automated so it runs weekly or twice weekly without manual effort.
+        </p>
+      </div>
+
+      <div class="checklist">
+        <div class="check-item">Open Windows search and type: <strong>Task Scheduler</strong></div>
+        <div class="check-item">Click: <strong>Create Basic Task</strong></div>
+        <div class="check-item">Choose: <strong>Weekly</strong> or <strong>Twice weekly</strong></div>
+        <div class="check-item">Select the manual run file or scheduled run file</div>
+        <div class="check-item">Set it during working hours</div>
+        <div class="check-item">Ensure the PC is switched on, connected to the internet and available when the task is due to run</div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>Made by Abhi</p>
+    </div>
+  </footer>
+
 </body>
 </html>
