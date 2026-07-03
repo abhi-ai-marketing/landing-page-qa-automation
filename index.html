@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Landing Page QA Automation</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f8f4ea;
+      color: #1f2937;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1050px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    .hero {
+      background: #fffdf7;
+      border: 1px solid #eadfca;
+      border-radius: 22px;
+      padding: 35px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.1;
+    }
+
+    h2 {
+      font-size: 28px;
+      margin-top: 40px;
+      border-bottom: 3px solid #bfdbfe;
+      display: inline-block;
+    }
+
+    h3 {
+      margin-top: 28px;
+      font-size: 21px;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #fde68a;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    .highlight {
+      background: linear-gradient(transparent 55%, #bfdbfe 55%);
+      font-weight: bold;
+    }
+
+    .card {
+      background: #fffdf7;
+      border: 1px solid #eadfca;
+      border-radius: 16px;
+      padding: 20px;
+      margin: 16px 0;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 16px;
+    }
+
+    .codebox {
+      background: #0f172a;
+      color: #e5e7eb;
+      border-radius: 14px;
+      overflow: hidden;
+      margin: 15px 0;
+    }
+
+    .codebar {
+      background: #111827;
+      padding: 10px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #cbd5e1;
+      font-size: 14px;
+    }
+
+    pre {
+      margin: 0;
+      padding: 16px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      font-size: 14px;
+    }
+
+    button {
+      background: #2563eb;
+      color: white;
+      border: 0;
+      padding: 7px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .warning {
+      background: #fffbeb;
+      border-left: 5px solid #f59e0b;
+      padding: 14px;
+      border-radius: 10px;
+      margin: 16px 0;
+    }
+
+    .success {
+      background: #ecfdf5;
+      border-left: 5px solid #16a34a;
+      padding: 14px;
+      border-radius: 10px;
+      margin: 16px 0;
+    }
+
+    .folder {
+      background: white;
+      border: 1px dashed #d6c6a8;
+      padding: 15px;
+      border-radius: 12px;
+      font-family: Consolas, monospace;
+      white-space: pre-wrap;
+    }
+
+    footer {
+      margin-top: 45px;
+      color: #6b7280;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <section class="hero">
+      <div class="tag">Marketing QA Automation</div>
+      <h1>Landing Page <span class="highlight">QA Automation</span></h1>
+      <p>
+        A simple browser automation workflow for checking landing pages, forms,
+        screenshots and reports before performance marketing campaigns.
+      </p>
+      <p>
+        This is a generic public guide. Do not add private company URLs, real emails,
+        API keys, passwords or internal information here.
+      </p>
+    </section>
+
+    <h2>What this solves</h2>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Manual checks</h3>
+        <p>Opening pages, clicking CTAs, filling forms and taking screenshots can become repetitive.</p>
+      </div>
+
+      <div class="card">
+        <h3>Campaign risk</h3>
+        <p>Sending paid traffic to a broken page or form can waste budget quickly.</p>
+      </div>
+
+      <div class="card">
+        <h3>Proof</h3>
+        <p>The workflow saves screenshots and a CSV report so there is a clear trail of what happened.</p>
+      </div>
+    </div>
+
+    <h2>How it works</h2>
+
+    <div class="card">
+      <p><strong>1.</strong> Node.js runs the automation script.</p>
+      <p><strong>2.</strong> The script calls agent-browser, which controls the testing browser.</p>
+      <p><strong>3.</strong> A testing browser opens the landing page.</p>
+      <p><strong>4.</strong> The workflow fills dummy data, clicks the approved CTA, captures screenshots and creates a report.</p>
+    </div>
+
+    <h2>Tools used</h2>
+
+    <div class="grid">
+      <div class="card"><strong>Node.js</strong><br>Runs the automation file.</div>
+      <div class="card"><strong>PowerShell</strong><br>Runs setup and test commands on Windows.</div>
+      <div class="card"><strong>Notepad</strong><br>Saves the prepared files.</div>
+      <div class="card"><strong>agent-browser</strong><br>Controls the testing browser.</div>
+      <div class="card"><strong>Task Scheduler</strong><br>Runs the test automatically.</div>
+      <div class="card"><strong>AI / GPT</strong><br>Helps create and troubleshoot the starter workflow.</div>
+    </div>
+
+    <h2>Step 1 — Install Node.js</h2>
+
+    <p>Download Node.js from:</p>
+
+    <div class="codebox">
+      <div class="codebar">
+        <span>Node.js link</span>
+        <button onclick="copyCode(this)">Copy</button>
+      </div>
+      <pre><code>https://nodejs.org/en</code></pre>
+    </div>
+
+    <p>Install the Windows LTS version with default options. Then open PowerShell and check:</p>
+
+    <div class="codebox">
+      <div class="codebar">
+        <span>PowerShell</span>
+        <button onclick="copyCode(this)">Copy</button>
+      </div>
+      <pre><code>node -v
+npm.cmd -v</code></pre>
+    </div>
+
+    <p>If both commands show version numbers, Node.js is installed correctly.</p>
+
+    <h2>Step 2 — Install browser control</h2>
+
+    <p>This installs the browser-control component used by the automation.</p>
+
+    <div class="codebox">
+      <div class="codebar">
+        <span>PowerShell</span>
+        <button onclick="copyCode(this)">Copy</button>
+      </div>
+      <pre><code>npm.cmd install -g agent-browser
+agent-browser.cmd install</code></pre>
+    </div>
+
+    <p>To test it:</p>
+
+    <div class="codebox">
+      <div class="codebar">
+        <span>PowerShell</span>
+        <button onclick="copyCode(this)">Copy</button>
+      </div>
+      <pre><code>agent-browser.cmd --headed open
+agent-browser.cmd close</code></pre>
+    </div>
+
+    <div class="warning">
+      <strong>Note:</strong> The testing browser may open as a blank page. That is normal.
+    </div>
+
+    <h2>Step 3 — Create the folder</h2>
+
+    <div class="codebox">
+      <div class="codebar">
+        <span>PowerShell</span>
+        <button onclick="copyCode(this)">Copy</button>
+      </div>
+      <pre><code>mkdir "$env:USERPROFILE\website-qa"
+mkdir "$env:USERPROFILE\website-qa\config"</code></pre>
+    </div>
+
+    <p>Final folder structure:</p>
+
+    <div class="folder">website-qa
+├── run-page-test.js
+├── run-test-now.bat
+├── run-scheduled.bat
+├── config
+│   └── page-config.json
+└── runs
+    └── generated automatically after each run</div>
+
+    <h2>Step 4 — Add page details</h2>
+
+    <p>Open the config file:</p>
+
+    <div class="codebox">
+      <div class="codebar">
+        <span>PowerShell</span>
+        <button onclick="copyCode(this)">Copy</button>
+      </div>
+      <pre><code>notepad "$env:USERPROFILE\website-qa\config\page-config.json"</code></pre>
+    </div>
+
+    <p>Paste and update this example:</p>
+
+    <div class="codebox">
+      <div class="codebar">
+        <span>page-config.json</span>
+        <button onclick="copyCode(this)">Copy</button>
+      </div>
+      <pre><code>{
+  "pageName": "Example Landing Page",
+  "pageUrl": "https://www.example.com/landing-page/",
+  "testName": "Website QA Test",
+  "testEmail": "test@example.com",
+  "testPhone": "07000000000",
+  "sourceValue": "Google",
+  "requiredFields": {
+    "fullName": ["Full Name", "Name"],
+    "email": ["Email Address", "Email"],
+    "phone": ["Phone No.", "Phone", "Telephone"],
+    "sourceDropdown": ["Where did you hear about us", "How did you hear about us"]
+  },
+  "submitButtonLabels": ["Submit", "Download", "Send"],
+  "approvedCtaLabels": ["Primary CTA", "Download", "Get in touch"],
+  "successText": ["thank", "thanks", "success", "submitted", "downloaded", "contact with you shortly"],
+  "emailTriggerCheck": "Manual inbox check required"
+}</code></pre>
+    </div>
+
+    <h2>Step 5 — Create the main automation file</h2>
+
+    <p>Open Notepad:</p>
+
+    <div class="codebox">
+      <div class="codebar">
+        <span>PowerShell</span>
+        <button onclick="copyCode(this)">Copy</button>
+      </div>
+      <pre><code>notepad "$env:USERPROFILE\website-qa\run-page-test.js"</code></pre>
+    </div>
+
+    <p>
+      Paste the prepared JavaScript automation code into this file.
+      Normal users should update the config file, not this main file.
+    </p>
+
+    <div class="warning">
+      <strong>Important:</strong> The full main automation code can be kept in a separate code section or separate file in this repository.
+      Keep this public version generic and remove all private business details.
+    </div>
+
+    <h2>Step 6 — Create run files</h2>
+
+    <p>Manual run file:</p>
+
+    <div class="codebox">
+      <div class="codebar">
+        <span>PowerShell</span>
+        <button onclick="copyCode(this)">Copy</button>
+      </div>
+      <pre><code>notepad "$env:USERPROFILE\website-qa\run-test-now.bat"</code></pre>
+    </div>
+
+    <div class="codebox">
+      <div class="codebar">
+        <span>run-test-now.bat</span>
+        <button onclick="copyCode(this)">Copy</button>
+      </div>
+      <pre><code>@echo off
+cd /d "%USERPROFILE%\website-qa"
+node run-page-test.js
+pause</code></pre>
+    </div>
+
+    <p>Scheduled run file:</p>
+
+    <div class="codebox">
+      <div class="codebar">
+        <span>PowerShell</span>
+        <button onclick="copyCode(this)">Copy</button>
+      </div>
+      <pre><code>notepad "$env:USERPROFILE\website-qa\run-scheduled.bat"</code></pre>
+    </div>
+
+    <div class="codebox">
+      <div class="codebar">
+        <span>run-scheduled.bat</span>
+        <button onclick="copyCode(this)">Copy</button>
+      </div>
+      <pre><code>@echo off
+cd /d "%USERPROFILE%\website-qa"
+echo ======================================== >> "%USERPROFILE%\website-qa\scheduler-log.txt"
+echo Website QA started at %date% %time% >> "%USERPROFILE%\website-qa\scheduler-log.txt"
+node run-page-test.js >> "%USERPROFILE%\website-qa\scheduler-log.txt" 2>&1
+echo Website QA finished at %date% %time% >> "%USERPROFILE%\website-qa\scheduler-log.txt"
+echo ======================================== >> "%USERPROFILE%\website-qa\scheduler-log.txt"</code></pre>
+    </div>
+
+    <div class="warning">
+      <strong>Important:</strong> In Notepad, choose <strong>Save as type: All Files</strong>.
+      Otherwise Windows may save the file as .bat.txt, which will not run correctly.
+    </div>
+
+    <h2>Step 7 — Run the test</h2>
+
+    <div class="codebox">
+      <div class="codebar">
+        <span>PowerShell</span>
+        <button onclick="copyCode(this)">Copy</button>
+      </div>
+      <pre><code>cd "$env:USERPROFILE\website-qa"
+node ".\run-page-test.js"</code></pre>
+    </div>
+
+    <p>Or double-click:</p>
+
+    <div class="codebox">
+      <div class="codebar">
+        <span>Run file</span>
+        <button onclick="copyCode(this)">Copy</button>
+      </div>
+      <pre><code>C:\Users\&lt;YourName&gt;\website-qa\run-test-now.bat</code></pre>
+    </div>
+
+    <h2>Step 8 — Check output</h2>
+
+    <p>Every run creates a dated folder here:</p>
+
+    <div class="codebox">
+      <div class="codebar">
+        <span>Folder</span>
+        <button onclick="copyCode(this)">Copy</button>
+      </div>
+      <pre><code>C:\Users\&lt;YourName&gt;\website-qa\runs</code></pre>
+    </div>
+
+    <p>The run folder can include:</p>
+
+    <ul>
+      <li>Before screenshot</li>
+      <li>After screenshot</li>
+      <li>CSV / Excel report</li>
+      <li>Time taken</li>
+      <li>Pass / fail status</li>
+      <li>Manual email-check note</li>
+    </ul>
+
+    <h2>Step 9 — Schedule it</h2>
+
+    <p>Open Windows Search and type:</p>
+
+    <div class="codebox">
+      <div class="codebar">
+        <span>Windows Search</span>
+        <button onclick="copyCode(this)">Copy</button>
+      </div>
+      <pre><code>Task Scheduler</code></pre>
+    </div>
+
+    <ul>
+      <li>Create Basic Task</li>
+      <li>Choose weekly or twice weekly</li>
+      <li>Choose a time during working hours</li>
+      <li>For Action, choose Start a program</li>
+      <li>Select run-scheduled.bat</li>
+    </ul>
+
+    <div class="success">
+      <strong>Scheduling note:</strong> The PC must be switched on, connected to the internet and available at the scheduled time.
+      If the PC is off, asleep or not logged in, the scheduled test may not run properly.
+    </div>
+
+    <h2>Important reminder</h2>
+
+    <p>
+      For every new landing page, do not rewrite the main automation file.
+      Update only:
+    </p>
+
+    <div class="codebox">
+      <div class="codebar">
+        <span>Config file</span>
+        <button onclick="copyCode(this)">Copy</button>
+      </div>
+      <pre><code>C:\Users\&lt;YourName&gt;\website-qa\config\page-config.json</code></pre>
+    </div>
+
+    <footer>
+      Generic public guide for landing page QA automation. Keep private business details out of public repositories.
+    </footer>
+
+  </div>
+
+  <script>
+    function copyCode(button) {
+      const code = button.parentElement.nextElementSibling.innerText;
+      navigator.clipboard.writeText(code).then(() => {
+        const old = button.innerText;
+        button.innerText = "Copied";
+        setTimeout(() => button.innerText = old, 1200);
+      });
+    }
+  </script>
+</body>
+</html>
