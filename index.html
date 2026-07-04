@@ -8,7 +8,6 @@
   <style>
     :root {
       --paper: #f7efe2;
-      --paper-dark: #efe1cf;
       --ink: #241f1b;
       --muted: #665a51;
       --soft: #fffaf1;
@@ -22,7 +21,6 @@
       --green: #a7e8b8;
       --orange: #ffb07a;
       --purple: #bda2ff;
-      --cream: #fff8ec;
       --dark: #1d1a17;
 
       --shadow: 0 18px 45px rgba(36, 31, 27, 0.12);
@@ -44,8 +42,8 @@
       line-height: 1.65;
       background:
         linear-gradient(rgba(255,255,255,0.18) 1px, transparent 1px),
-        radial-gradient(circle at top left, rgba(255, 226, 138, 0.45), transparent 30%),
-        radial-gradient(circle at top right, rgba(159, 208, 255, 0.35), transparent 34%),
+        radial-gradient(circle at top left, rgba(255, 226, 138, 0.42), transparent 30%),
+        radial-gradient(circle at top right, rgba(159, 208, 255, 0.30), transparent 34%),
         var(--paper);
       background-size: 100% 34px, auto, auto, auto;
     }
@@ -64,7 +62,7 @@
     }
 
     .top-nav {
-      padding: 28px 0 12px;
+      padding: 28px 0 14px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -78,7 +76,7 @@
       padding: 12px 20px;
       border-radius: 999px;
       font-weight: 900;
-      box-shadow: 0 10px 22px rgba(185, 22, 85, 0.25);
+      box-shadow: 0 10px 22px rgba(185, 22, 85, 0.22);
       transform: rotate(-1deg);
     }
 
@@ -92,12 +90,12 @@
     .nav-links a {
       text-decoration: none;
       color: var(--ink);
-      background: rgba(255,255,255,0.82);
+      background: rgba(255,255,255,0.86);
       border: 1px solid var(--line);
       padding: 11px 16px;
       border-radius: 999px;
       font-weight: 800;
-      box-shadow: 0 8px 20px rgba(36,31,27,0.06);
+      box-shadow: 0 8px 20px rgba(36,31,27,0.05);
     }
 
     .nav-links .linkedin {
@@ -108,10 +106,10 @@
 
     .hero {
       display: grid;
-      grid-template-columns: 1.08fr 0.92fr;
-      gap: 34px;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 38px;
       align-items: center;
-      padding: 46px 0 34px;
+      padding: 54px 0 48px;
     }
 
     .eyebrow {
@@ -137,11 +135,6 @@
       padding: 0 8px;
     }
 
-    .marker-yellow {
-      background: linear-gradient(transparent 58%, var(--yellow) 58%);
-      padding: 0 8px;
-    }
-
     .lead {
       font-size: 22px;
       color: var(--muted);
@@ -149,63 +142,34 @@
       margin: 26px 0 0;
     }
 
-    .hero-actions {
+    .hero-meta {
       display: flex;
       flex-wrap: wrap;
-      gap: 14px;
+      gap: 12px;
       margin-top: 28px;
     }
 
-    .btn {
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 16px;
-      padding: 15px 22px;
-      font-weight: 900;
-      transition: all 0.18s ease;
-    }
-
-    .btn:hover {
-      transform: translateY(-3px) rotate(-1deg);
-      box-shadow: var(--shadow);
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--pink), var(--pink-dark));
-      color: white;
-    }
-
-    .btn-light {
-      background: white;
-      color: var(--ink);
+    .meta-pill {
+      background: rgba(255,255,255,0.88);
       border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 10px 15px;
+      font-weight: 800;
+      color: var(--muted);
+      box-shadow: 0 8px 20px rgba(36,31,27,0.05);
     }
 
-    .btn-linkedin {
-      background: #0a66c2;
-      color: white;
-    }
-
-    .sketch-card {
+    .summary-card {
       background: var(--soft);
       border: 1px solid var(--line);
       border-radius: var(--radius);
       padding: 30px;
       box-shadow: var(--shadow);
       position: relative;
+      transform: rotate(0.8deg);
     }
 
-    .sketch-card.tilt-right {
-      transform: rotate(1.2deg);
-    }
-
-    .sketch-card.tilt-left {
-      transform: rotate(-1deg);
-    }
-
-    .tape::before {
+    .summary-card::before {
       content: "";
       position: absolute;
       top: -15px;
@@ -213,20 +177,15 @@
       transform: translateX(-50%) rotate(-2deg);
       width: 130px;
       height: 32px;
-      background: rgba(196, 164, 117, 0.42);
+      background: rgba(196, 164, 117, 0.38);
       border-radius: 5px;
       box-shadow: 0 5px 10px rgba(36,31,27,0.08);
     }
 
-    .side-note {
-      background: #fff5c9;
-      border: 1px solid #efd479;
-      border-radius: 18px;
-      padding: 16px 18px;
-      margin-top: 22px;
-      color: #5a4630;
-      transform: rotate(-1deg);
-      font-size: 18px;
+    .summary-card h3 {
+      margin: 8px 0 16px;
+      font-size: 30px;
+      line-height: 1.18;
     }
 
     .check-list {
@@ -300,7 +259,7 @@
     }
 
     .note-card {
-      background: rgba(255,255,255,0.82);
+      background: rgba(255,255,255,0.84);
       border: 1px solid var(--line);
       border-radius: 26px;
       padding: 28px;
@@ -318,7 +277,7 @@
       border-radius: 50%;
       right: -44px;
       bottom: -44px;
-      opacity: 0.25;
+      opacity: 0.24;
       background: var(--blue);
     }
 
@@ -383,7 +342,7 @@
       border-radius: 18px;
       display: grid;
       place-items: center;
-      font-size: 24px;
+      font-size: 18px;
       margin-bottom: 18px;
       background: linear-gradient(135deg, var(--blue), white);
       font-weight: 900;
@@ -431,17 +390,6 @@
       box-shadow: var(--shadow);
       position: relative;
       overflow: hidden;
-    }
-
-    .logic-box::after {
-      content: "simple logic";
-      position: absolute;
-      top: 18px;
-      right: 24px;
-      color: var(--yellow);
-      font-family: "Segoe Print", "Bradley Hand", "Comic Sans MS", cursive;
-      font-size: 18px;
-      transform: rotate(4deg);
     }
 
     .logic-box h3 {
@@ -583,9 +531,7 @@
         grid-template-columns: 1fr;
       }
 
-      .sketch-card,
-      .sketch-card.tilt-right,
-      .sketch-card.tilt-left {
+      .summary-card {
         transform: none;
       }
 
@@ -608,110 +554,104 @@
     <div class="brand hand">Made by Abhi</div>
 
     <div class="nav-links">
+      <a href="#overview">Overview</a>
       <a href="#problem">Problem</a>
       <a href="#tools">Tools</a>
       <a href="#workflow">Workflow</a>
-      <a href="#code">Code</a>
+      <a href="#code">Setup</a>
       <a href="#schedule">Schedule</a>
-      <a class="linkedin" href="https://www.linkedin.com/in/abhiram-sai/" target="_blank" rel="noopener">Follow on LinkedIn ↗</a>
+      <a class="linkedin" href="https://www.linkedin.com/in/abhiram-sai/" target="_blank" rel="noopener">LinkedIn ↗</a>
     </div>
   </nav>
 
-  <header class="hero page">
+  <header class="hero page" id="overview">
     <div>
       <div class="eyebrow">Performance marketing QA</div>
 
       <h1 class="serif">
-        The Landing Page<br>
+        Landing Page<br>
         <span class="marker-blue">QA Automation</span><br>
         Workflow
       </h1>
 
       <p class="lead">
-        A marketer-friendly browser automation workflow to test landing pages before paid traffic goes live.
-        Fewer repetitive checks. Clearer proof. A simple report trail.
+        A simple browser automation workflow for checking landing pages before paid traffic goes live.
+        It helps test the key page journey, capture screenshots, record results and keep checks repeatable.
       </p>
 
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="#workflow">View workflow →</a>
-        <a class="btn btn-light" href="#code">Copy setup snippets</a>
-        <a class="btn btn-linkedin" href="https://www.linkedin.com/in/abhiram-sai/" target="_blank" rel="noopener">Follow on LinkedIn ↗</a>
-      </div>
-
-      <div class="side-note hand">
-        built like a working notebook, not a boring technical manual.
+      <div class="hero-meta">
+        <span class="meta-pill">Browser automation</span>
+        <span class="meta-pill">Landing page checks</span>
+        <span class="meta-pill">Screenshots + report</span>
+        <span class="meta-pill">Scheduled testing</span>
       </div>
     </div>
 
-    <aside class="sketch-card tape tilt-right">
-      <h3 class="hand">Before traffic goes live...</h3>
+    <aside class="summary-card">
+      <h3 class="hand">Pre-launch checks</h3>
 
       <ul class="check-list">
-        <li>Does the page load?</li>
-        <li>Does the CTA work?</li>
-        <li>Does the form submit?</li>
-        <li>Are screenshots saved?</li>
-        <li>Is there a report?</li>
+        <li>Page loads correctly</li>
+        <li>Primary CTA is visible</li>
+        <li>Form fields are detected</li>
+        <li>Dummy test details are submitted</li>
+        <li>Screenshots and report are saved</li>
       </ul>
-
-      <p class="hand" style="margin-top:22px; color:#8f103f;">
-        → test the basics before the budget starts moving.
-      </p>
     </aside>
   </header>
 
   <section class="page" id="problem">
     <div class="section-kicker">What this solves</div>
-    <h2 class="serif">Manual landing page checks are important, but repetitive.</h2>
+    <h2 class="serif">Landing page checks are important, but often repetitive.</h2>
     <div class="scribble"></div>
 
     <p class="section-intro">
-      Performance marketers often test the same journey again and again:
-      open page, click button, fill dummy data, submit form, take screenshots and check the result.
+      Performance campaigns depend on working landing pages, CTAs and forms.
+      This workflow turns basic pre-launch checks into a repeatable process.
     </p>
 
     <div class="cards-3">
       <div class="note-card pink">
-        <span class="mini-label">Problem 01</span>
+        <span class="mini-label">Challenge 01</span>
         <h3>Manual checks</h3>
-        <p>Repeating the same checks before campaigns takes time.</p>
+        <p>Repeatedly opening pages, filling forms and taking screenshots can take time.</p>
       </div>
 
       <div class="note-card yellow">
-        <span class="mini-label">Problem 02</span>
+        <span class="mini-label">Challenge 02</span>
         <h3>Campaign risk</h3>
-        <p>Sending paid traffic to a broken page or form can waste budget quickly.</p>
+        <p>Paid traffic should not be sent to a broken page, CTA or form journey.</p>
       </div>
 
       <div class="note-card green">
-        <span class="mini-label">Problem 03</span>
-        <h3>No clear trail</h3>
-        <p>Screenshots and a report make the test easier to review later.</p>
+        <span class="mini-label">Challenge 03</span>
+        <h3>Review trail</h3>
+        <p>Saved screenshots and reports make it easier to review what happened in each run.</p>
       </div>
     </div>
   </section>
 
   <section class="page">
-    <div class="section-kicker">Why now</div>
-    <h2 class="serif">Browser automation is not new. Access is the change.</h2>
+    <div class="section-kicker">Why it matters</div>
+    <h2 class="serif">A useful safety check before campaign traffic starts.</h2>
     <div class="scribble"></div>
 
     <p class="section-intro">
-      Tools like Selenium and Playwright have existed for years, but they mostly sat with developers and QA teams.
-      AI makes it easier for marketers to understand the workflow, create starter code and troubleshoot the setup.
+      Browser automation has existed for years, but AI now makes it easier for marketers to understand the workflow,
+      create starter code and troubleshoot the setup.
     </p>
 
     <div class="cards-2">
       <div class="note-card orange">
-        <span class="mini-label">Old way</span>
-        <h3>Dev / QA dependency</h3>
-        <p>Ask developers or QA teams to build the test workflow properly.</p>
+        <span class="mini-label">Before</span>
+        <h3>Mostly manual</h3>
+        <p>Landing page journeys are checked manually before or after campaigns launch.</p>
       </div>
 
       <div class="note-card purple">
-        <span class="mini-label">New way</span>
-        <h3>AI-assisted start</h3>
-        <p>Describe the requirement, create starter code, test it and refine the workflow.</p>
+        <span class="mini-label">Now</span>
+        <h3>Repeatable workflow</h3>
+        <p>The same page check can be run again and again with saved outputs.</p>
       </div>
     </div>
   </section>
@@ -735,21 +675,21 @@
       </div>
 
       <div class="tool">
-        <div class="tool-icon">txt</div>
+        <div class="tool-icon">TXT</div>
         <h3>Notepad</h3>
-        <p>Saves the prepared files and config.</p>
+        <p>Stores the prepared script and config files.</p>
       </div>
 
       <div class="tool">
-        <div class="tool-icon">web</div>
+        <div class="tool-icon">WEB</div>
         <h3>agent-browser</h3>
-        <p>Controls the testing browser.</p>
+        <p>Controls the testing browser during the run.</p>
       </div>
 
       <div class="tool">
-        <div class="tool-icon">cal</div>
+        <div class="tool-icon">CAL</div>
         <h3>Task Scheduler</h3>
-        <p>Runs the test automatically.</p>
+        <p>Runs the workflow automatically on a schedule.</p>
       </div>
 
       <div class="tool">
@@ -762,19 +702,19 @@
 
   <section class="page" id="workflow">
     <div class="section-kicker">Workflow</div>
-    <h2 class="serif">How the workflow runs</h2>
+    <h2 class="serif">How the automation runs</h2>
     <div class="scribble"></div>
 
     <p class="section-intro">
-      The test itself is normal browser automation. AI helps create and refine the starter workflow.
+      The workflow opens a selected landing page, checks the required page elements, submits dummy test details and saves the output.
     </p>
 
     <div class="workflow-board">
       <div class="flow-step">
         <div class="num">1</div>
         <div>
-          <h3>Install the basics</h3>
-          <p>Install Node.js, then install the browser-control component through PowerShell.</p>
+          <h3>Set up the tools</h3>
+          <p>Install Node.js and the browser-control component using PowerShell.</p>
         </div>
       </div>
 
@@ -782,45 +722,45 @@
         <div class="num">2</div>
         <div>
           <h3>Create the working folder</h3>
-          <p>Create one local folder called <strong>website-qa</strong> to store files, outputs and reports.</p>
+          <p>Create one local folder to store scripts, config files, screenshots and reports.</p>
         </div>
       </div>
 
       <div class="flow-step">
         <div class="num">3</div>
         <div>
-          <h3>Add the prepared files</h3>
-          <p>Save the main automation file, config file and run file using Notepad.</p>
+          <h3>Add page details</h3>
+          <p>Update the config file with page name, URL, test details and button labels.</p>
         </div>
       </div>
 
       <div class="flow-step">
         <div class="num">4</div>
         <div>
-          <h3>Update page details</h3>
-          <p>Change the page name, page URL, test email and approved button wording in the config file.</p>
+          <h3>Run the test</h3>
+          <p>The testing browser opens the page, fills the form and clicks the approved CTA.</p>
         </div>
       </div>
 
       <div class="flow-step">
         <div class="num">5</div>
         <div>
-          <h3>Run the test</h3>
-          <p>The browser opens, the page loads, dummy data is filled, the approved CTA is clicked and screenshots are saved.</p>
+          <h3>Save evidence</h3>
+          <p>The workflow saves screenshots, page snapshots and a simple CSV report.</p>
         </div>
       </div>
 
       <div class="flow-step">
         <div class="num">6</div>
         <div>
-          <h3>Review the output</h3>
-          <p>Each run creates a dated folder with screenshots, pass/fail status, time taken and report.</p>
+          <h3>Repeat on schedule</h3>
+          <p>The same test can be scheduled to run weekly, twice weekly or before campaign launch.</p>
         </div>
       </div>
     </div>
 
     <div class="logic-box">
-      <h3 class="serif">Simple logic behind the code</h3>
+      <h3 class="serif">Simple logic behind the workflow</h3>
       <p>
         PowerShell starts the script. Node.js runs the script. The script calls agent-browser.
         agent-browser controls the testing browser. The workflow reads the config, opens the page,
@@ -839,12 +779,12 @@
   </section>
 
   <section class="page" id="code">
-    <div class="section-kicker">Copy snippets</div>
-    <h2 class="serif">Setup commands and files</h2>
+    <div class="section-kicker">Setup snippets</div>
+    <h2 class="serif">Commands and config examples</h2>
     <div class="scribble"></div>
 
     <p class="section-intro">
-      These are the small setup snippets used to create the local workflow.
+      The page details can be changed in the config file, so the same workflow can be reused for different landing pages.
     </p>
 
     <div class="code-zone">
@@ -922,12 +862,12 @@ pause</code></pre>
 
   <section class="page" id="output">
     <div class="section-kicker">Output</div>
-    <h2 class="serif">What the workflow gives back</h2>
+    <h2 class="serif">What each run creates</h2>
     <div class="scribble"></div>
 
     <div class="output-grid">
-      <div class="sketch-card tape tilt-left">
-        <h3 class="hand">Each run creates...</h3>
+      <div class="summary-card">
+        <h3 class="hand">Saved output</h3>
         <ul class="check-list">
           <li>Before screenshot</li>
           <li>After screenshot</li>
@@ -939,10 +879,10 @@ pause</code></pre>
       </div>
 
       <div class="note-card purple">
-        <span class="mini-label">Why it helps</span>
-        <h3>It creates a visible QA trail</h3>
+        <span class="mini-label">Review trail</span>
+        <h3>Clear evidence for each test</h3>
         <p>
-          Instead of relying on memory, the workflow creates a folder with screenshots and report output that can be reviewed later.
+          Each run saves its own folder, making it easier to compare results and review issues later.
         </p>
       </div>
     </div>
@@ -950,11 +890,11 @@ pause</code></pre>
 
   <section class="page" id="schedule">
     <div class="section-kicker">Automation</div>
-    <h2 class="serif">Make it automatic with Task Scheduler</h2>
+    <h2 class="serif">Run the check on a schedule</h2>
     <div class="scribble"></div>
 
     <p class="section-intro">
-      Once the manual run works, the same test can be scheduled weekly, twice weekly or before campaigns go live.
+      Once the manual run works, Windows Task Scheduler can run the workflow weekly, twice weekly or before campaigns go live.
     </p>
 
     <div class="cards-3">
@@ -975,10 +915,10 @@ pause</code></pre>
     </div>
 
     <div class="logic-box">
-      <h3 class="serif">Important scheduling note</h3>
+      <h3 class="serif">Scheduling requirement</h3>
       <p>
         The PC must be switched on, connected to the internet and available when the scheduled test runs.
-        If the PC is off or asleep, the scheduled test may not run properly.
+        If the PC is off or asleep, the scheduled test may not run.
       </p>
     </div>
   </section>
